@@ -1,0 +1,24 @@
+{
+    "name": "veka-server/myFramework",
+    "description": "my Framework",
+    "license": "MIT",
+    "keywords": ["PSR4","PSR15","PSR","middleware"],
+    "authors": [
+        {
+            "name": "Vanhaezebrouck Nicolas",
+            "email": "contact@veka-server.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "VK\\Framework\\" : "src/"
+        }
+    },
+    "require": {
+        "psr/http-message": "^1.0",
+        "guzzlehttp/psr7": "^1.4",
+        "http-interop/response-sender": "^1.0",
+        "http-interop/http-middleware": "^0.5.0",
+        "middlewares/whoops": "^0.5.0"
+    }
+}
