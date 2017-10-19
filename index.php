@@ -6,11 +6,11 @@ require 'vendor/autoload.php';
 use function Http\Response\send;
 
 // creation du dispatcher
-$Dispatcher = new VK\Framework\Dispatcher();
+$Dispatcher = new VekaServer\Dispatcher\Dispatcher();
 
 // ajout des middlewares
 $Dispatcher
-    ->pipe(new \Middlewares\Whoops())
+//    ->pipe(new \Middlewares\Whoops())
     ->pipe(new VK\Framework\MyMiddleware())
     ->pipe(new VK\Framework\MyMiddlewareA());
 
