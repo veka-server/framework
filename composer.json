@@ -1,11 +1,11 @@
 {
     "autoload": {
         "psr-4": {
-            "VK\\Framework\\" : "src/"
+            "App\\" : "src/"
         }
     },
     "require": {
-        "veka-server/dispatcher": "dev-master@dev"
-
+        "veka-server/app": "^0.3.4",
+        "middlewares/whoops": "^0.5.0"
     }
 }

@@ -1,25 +1,40 @@
 <?php
 
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+
 // utilisation du loader de composer
 require 'vendor/autoload.php';
 
-use function Http\Response\send;
+class MyApp extends \VekaServer\Framework\App {
 
-// creation du dispatcher
-$Dispatcher = new VekaServer\Dispatcher\Dispatcher();
+    /**
+     * Cette methode sera executer avant le router et le dispatcher
+     * @param ServerRequestInterface $request
+     * @return mixed
+     */
+    public function before_router(ServerRequestInterface $request)
+    {
+        // TODO: Implement before_router() method.
+        return ;
+    }
 
-// ajout des middlewares
-$Dispatcher
-//    ->pipe(new \Middlewares\Whoops())
-    ->pipe(new VK\Framework\MyMiddleware())
-    ->pipe(new VK\Framework\MyMiddlewareA());
 
-// recuperation de la requete recue
-$request = \GuzzleHttp\Psr7\ServerRequest::fromGlobals();
+    /**
+     * Cette methode sera executer apres le router mais avant l'affichage
+     * @param ServerRequestInterface $request
+     * @param ResponseInterface $response
+     * @return mixed
+     */
+    public function after_router(ServerRequestInterface $request,ResponseInterface $response)
+    {
+        // TODO: Implement after_router() method.
 
-// lance l'execution des middlewares et recupere la reponse
-$response = $Dispatcher->process($request);
+        $a = 3/0;
 
-// si la reponse est presente ont l'affiche
-if($response instanceof \Psr\Http\Message\ResponseInterface)
-    send($response);
+        return ;
+    }
+
+}
+
+new MyApp(__DIR__);
