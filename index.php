@@ -29,9 +29,6 @@ class MyApp extends \VekaServer\Framework\App {
     public function after_router(ServerRequestInterface $request,ResponseInterface $response)
     {
         // TODO: Implement after_router() method.
-
-        $a = 3/0;
-
         return ;
     }
 
