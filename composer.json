@@ -6,6 +6,7 @@
     },
     "require": {
         "veka-server/app": "^0.3.4",
+        "veka-server/twig-renderer": "^0.1.2",
         "middlewares/whoops": "^0.5.0"
     }
 }

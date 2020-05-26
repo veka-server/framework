@@ -8,7 +8,8 @@ return (new \VekaServer\Rooter\Rooter())
 
     // Page home
     ->get('/home',function(){
-        echo 'coucou tout le monde';
+        $controller = new \App\controller\Accueil();
+        echo $controller->show_page();
     })
 
     // Page d'accueil
