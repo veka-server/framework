@@ -4,19 +4,18 @@
  * Ce fichier doit obligatoirement retourner un middleware
  */
 
-// ajout des middlewares
-return (new \VekaServer\Dispatcher\Dispatcher())
+$dispatcher = (new \VekaServer\Dispatcher\Dispatcher());
 
-    // catch les exception PHP
-    ->pipe(new \Middlewares\Whoops())
+/**
+ * Ajout de Whoops seulement si ENV = DEV
+ */
+if(\VekaServer\Config\Config::getInstance()->get('ENV') == 'DEV'){
+    $dispatcher->pipe(new \Middlewares\Whoops());
+}
 
-    // Router
-    ->pipe(require_once('router.php'))
-;
+/**
+ * Ajout du router
+ */
+$dispatcher->pipe(require_once('router.php'));
 
-
-
-
-
-
-
+return $dispatcher;
