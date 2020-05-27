@@ -10,7 +10,7 @@ return [
      */
     "Renderer" => new \VekaServer\TwigRenderer\TwigRenderer(
         __DIR__.'\../src/view/',
-        __DIR__.'\../cache/'
+        false /* __DIR__.'\../cache/' */
     )
 
     /**
