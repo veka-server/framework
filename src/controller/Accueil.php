@@ -11,7 +11,9 @@ class Accueil extends \VekaServer\Framework\Controller
 {
 
     public function show_page(){
-        
+
+        $p = 66/0;
+
         $params = [
             'variable_1' => 'hello world '.test::test()
         ];

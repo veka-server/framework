@@ -4,18 +4,15 @@
  * Ce fichier doit obligatoirement retourner un middleware
  */
 
-$dispatcher = (new \VekaServer\Dispatcher\Dispatcher());
+use Middlewares\Utils\Dispatcher;
 
-/**
- * Ajout de Whoops seulement si ENV = DEV
- */
-if(\VekaServer\Config\Config::getInstance()->get('ENV') == 'DEV'){
-    $dispatcher->pipe(new \Middlewares\Whoops());
-}
+$dispatcher = new Dispatcher([
 
-/**
- * Ajout du router
- */
-$dispatcher->pipe(require_once('router.php'));
+    VekaServer\Config\Config::getInstance()->get('ENV') == 'DEV' ? new Middlewares\Whoops() : null,
+
+    //Handle the route
+    require_once('router.php'),
+
+]);
 
 return $dispatcher;
