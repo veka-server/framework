@@ -13,9 +13,4 @@ return [
         false /* __DIR__.'\../cache/' */
     )
 
-    /**
-     * Classe d'interaction avec la BDD qui doit étendre VekaServer\Bdd
-     */
-    ,"Bdd" => null
-
 ];
