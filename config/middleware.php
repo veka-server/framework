@@ -1,10 +1,10 @@
 <?php
 /**
- * A utiliser avec le classe de dispatcher de veka-server/dispatcher
- * Ce fichier doit obligatoirement retourner un middleware
+ * Ce fichier doit obligatoirement retourner un un tableau avec en premier parametre un dispatcher et en second la request
  */
 
 use Middlewares\Utils\Dispatcher;
+use Zend\Diactoros\ServerRequestFactory;
 
 $dispatcher = new Dispatcher([
 
@@ -15,4 +15,7 @@ $dispatcher = new Dispatcher([
 
 ]);
 
-return $dispatcher;
+// recuperation de la requete recue
+$request = ServerRequestFactory::fromGlobals();
+
+return [$dispatcher,$request];
