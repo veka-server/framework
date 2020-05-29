@@ -13,5 +13,8 @@
         "nyholm/psr7-server": "^0.4.1",
         "veka-server/discord-log": "^0.0.1",
         "veka-server/redirect-error-500": "^0.0.3"
+    },
+    "require-dev": {
+        "php-middleware/php-debug-bar": "^4.0"
     }
 }

@@ -7,6 +7,7 @@ class Accueil extends \VekaServer\Framework\Controller
 {
 
     public function show_page(){
+        header('Content-Type: text/html');
 
         $params = [
             'variable_1' => 'hello world '.test::test()
