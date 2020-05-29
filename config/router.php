@@ -13,6 +13,11 @@ return (new \VekaServer\Rooter\Rooter())
     })
 
     // Page d'accueil
+    ->get('/500',function(){
+        echo 'Eroor 500 : custom page';
+    })
+    
+    // Page d'accueil
     ->get('/',function(){
         echo 'Page d\'accueil';
     })
