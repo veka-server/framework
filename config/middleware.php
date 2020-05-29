@@ -12,10 +12,8 @@ $psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
 $creator = new \Nyholm\Psr7Server\ServerRequestCreator($psr17Factory,$psr17Factory,$psr17Factory,$psr17Factory);
 
 /** DebugBar */
-$debugbar = new DebugBar\StandardDebugBar();
-$debugbarRenderer = $debugbar->getJavascriptRenderer('/phpdebugbar');
+$debugbarRenderer = \VekaServer\Container\Container::getInstance()->get('DebugBar')->getJavascriptRenderer('/phpdebugbar');
 $middleware_phpbar = new PhpMiddleware\PhpDebugBar\PhpDebugBarMiddleware($debugbarRenderer, $psr17Factory, $psr17Factory);
-//$debugbar['messages']->addMessage('hello');
 
 /** Whoops */
 $middleware_whoops = new Middlewares\Whoops();

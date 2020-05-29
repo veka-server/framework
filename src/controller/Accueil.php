@@ -7,7 +7,12 @@ class Accueil extends \VekaServer\Framework\Controller
 {
 
     public function show_page(){
-        header('Content-Type: text/html');
+
+        \VekaServer\Container\Container::getInstance()->get('DebugBar')['messages']->addMessage('hello');
+
+        \VekaServer\Container\Container::getInstance()->get('DebugBar')['time']->measure('My long operation', function() {
+            sleep(2);
+        });
 
         $params = [
             'variable_1' => 'hello world '.test::test()

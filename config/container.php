@@ -13,4 +13,6 @@ return [
         false /* __DIR__.'\../cache/' */
     )
 
+    ,"DebugBar" => new DebugBar\StandardDebugBar()
+
 ];
