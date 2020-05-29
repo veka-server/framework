@@ -17,9 +17,9 @@ $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
 
 $dispatcher = new Middlewares\Utils\Dispatcher([
 
-    VekaServer\Config\Config::getInstance()->get('ENV') == 'DEV' ? new Middlewares\Whoops() : new \App\classe\RedirectError500('/500'),
+    VekaServer\Config\Config::getInstance()->get('ENV') == 'DEV' ? new Middlewares\Whoops() : new VekaServer\RedirectErrorPage\RedirectErrorPage('/500'),
 
-    new \App\classe\DiscordLog(
+    new VekaServer\DiscordLog\DiscordLog(
         $psr17Factory
         ,VekaServer\Config\Config::getInstance()->get('DISCORD_CHANNEL')
         ,VekaServer\Config\Config::getInstance()->get('DISCORD_APP_NAME')
