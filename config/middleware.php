@@ -3,10 +3,7 @@
  * Ce fichier doit obligatoirement retourner un un tableau avec en premier parametre un dispatcher et en second la request
  */
 
-use Middlewares\Utils\Dispatcher;
-use Zend\Diactoros\ServerRequestFactory;
-
-$dispatcher = new Dispatcher([
+$dispatcher = new Middlewares\Utils\Dispatcher([
 
     VekaServer\Config\Config::getInstance()->get('ENV') == 'DEV' ? new Middlewares\Whoops() : null,
 
@@ -15,7 +12,16 @@ $dispatcher = new Dispatcher([
 
 ]);
 
-// recuperation de la requete recue
-$request = ServerRequestFactory::fromGlobals();
+/**
+ * Creation de la request (ServerRequestFactory) a partir de Nyholm
+ */
+$psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+$creator = new \Nyholm\Psr7Server\ServerRequestCreator(
+    $psr17Factory, // ServerRequestFactory
+    $psr17Factory, // UriFactory
+    $psr17Factory, // UploadedFileFactory
+    $psr17Factory  // StreamFactory
+);
+$request = $creator->fromGlobals();
 
 return [$dispatcher,$request];
